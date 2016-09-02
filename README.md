@@ -4,6 +4,5 @@
 
 #### 包含模块
 ***
-1：mybatis数据访问模块
-数据源使用的是阿里开源的德鲁伊（druid）数据源
+1：spring mvc构建简单restful webservices
 ***
