@@ -9,7 +9,7 @@
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 	<!-- Spring配置开始 -->
-	<!-- <listener>
+	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	<context-param>
@@ -17,7 +17,7 @@
 		<param-value>
 			classpath*:META-INF/ApplicationContext.xml
 		</param-value>
-	</context-param> -->
+	</context-param>
 	<!-- 服务器启动即加载 -->
 	<servlet>
 		<servlet-name>SpringMVC</servlet-name>
