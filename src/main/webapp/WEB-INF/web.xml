@@ -15,7 +15,7 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			classpath*:META-INF/ApplicationContext.xml
+			classpath*:META-INF/spring/ApplicationContext-*.xml
 		</param-value>
 	</context-param>
 	<!-- 服务器启动即加载 -->

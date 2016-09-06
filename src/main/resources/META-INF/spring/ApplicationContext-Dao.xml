@@ -1,0 +1,45 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd   
+    http://www.springframework.org/schema/tx   
+    http://www.springframework.org/schema/tx/spring-tx-2.5.xsd   
+    http://www.springframework.org/schema/aop    
+    http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+	<bean id="configDataSource" class="com.alibaba.druid.pool.DruidDataSource">
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:mysql://localhost/mysql</value>
+		</property>
+		<property name="username">
+			<value>root</value>
+		</property>
+		<property name="password">
+			<value>wangmeng</value>
+		</property>
+		<!-- 初始化连接大小 -->
+		<property name="initialSize" value="3" />
+		<!-- 连接池最大使用连接数量 -->
+		<property name="maxActive" value="20" />
+		<!-- 连接池最大空闲 -->
+		<!--如果超过这个时间，连接没有被使用则连接就会自动断掉，设置为零，则连接永生 -->
+		<!-- <property name="maxIdle" value="30" /> -->
+		<!-- 连接池最小空闲 -->
+		<!--简单的来说就是连接的生存时间，也就是一个连接如果超过这个时长的话就将会被断开，当然，正在执行的连接会在close时候在断开，设置为零，则连接永生 -->
+		<property name="minIdle" value="0" />
+		<!-- 获取连接最大等待时间 -->
+		<property name="maxWait" value="60000" />
+	</bean>
+	<bean id="configSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="configDataSource" />
+		<property name="configLocation"
+			value="classpath:META-INF/mybatis/Mybatis-Config.xml"></property>
+	</bean>
+	<bean id="configDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.afu.dao.ServiceConfigDao"></property>
+		<property name="sqlSessionFactory" ref="configSqlSessionFactory"></property>
+	</bean>
+</beans>
