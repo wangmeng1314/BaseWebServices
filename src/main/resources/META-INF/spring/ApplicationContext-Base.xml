@@ -18,4 +18,7 @@
 	<bean id="bizService" class="com.afu.service.impl.BizServiceImpl">
 		<property name="ServiceConfigDao" ref="configDao" />
 	</bean>
+	<bean id="configService" class="com.afu.service.impl.ConfigServiceImpl">
+		<property name="ServiceConfigDao" ref="configDao" />
+	</bean>
 </beans>

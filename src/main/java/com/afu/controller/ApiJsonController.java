@@ -15,6 +15,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.afu.dao.databasemodel.ServiceConfig;
+import com.afu.service.ConfigService;
+import com.afu.service.impl.ConfigServiceImpl;
 import com.afu.utils.SpringBeanUtil;
 
 /**
@@ -33,6 +36,9 @@ public class ApiJsonController {
 	@Autowired(required = false)
 	private SpringBeanUtil springBeanUtil;
 
+	@Autowired
+	private ConfigServiceImpl configService;
+
 	/**
 	 * @author fulei.yang
 	 * @param request
@@ -41,16 +47,13 @@ public class ApiJsonController {
 	 * @param functionName
 	 * @date 2016/9/1
 	 */
-	@RequestMapping(value = "/{serviceName}/{methodName}")
+	@RequestMapping(value = "/{serviceKey}/{methodKey}")
 	public void RestfulHandler(HttpServletRequest request, HttpServletResponse response,
-			@PathVariable(value = "serviceName") String serviceName,
-			@PathVariable(value = "methodName") String methodName) {
-		String serviceNameTemp = null;
-		String methodNameTemp = null;
+			@PathVariable(value = "serviceKey") String serviceKey,
+			@PathVariable(value = "methodKey") String methodKey) {
 		String paramsString = null;
-		// 获取serviceName和methodName
-		serviceNameTemp = serviceName;
-		methodNameTemp = methodName;
+		// 使用请求路径中的serviceKey和methodKey获取真正的服务名和方法名
+		ServiceConfig serviceConfig = (ServiceConfig) configService.getConfig();
 		// 取得数据流中参数
 		try {
 			InputStream is = request.getInputStream();
@@ -60,7 +63,7 @@ public class ApiJsonController {
 			e.printStackTrace();
 		}
 		// 业务逻辑处理
-		handleJson(response, serviceNameTemp, methodNameTemp, paramsString);
+		handleJson(response, serviceConfig.getServiceName(), serviceConfig.getMethodName(), paramsString);
 	}
 
 	/**

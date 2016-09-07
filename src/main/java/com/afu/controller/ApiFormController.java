@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
 /**
  * 提交参数为form表单</br>
  * 
@@ -25,7 +26,6 @@ public class ApiFormController {
 	private static final String DEFAULT_CHARSET = "UTF-8";
 	private static final String DEFAULT_CONTENT_TYPE_NAME = "content-type";
 	private static final String DEFAULT_CONTENT_TYPE_VALUE = "application/json;charset=UTF-8";
-
 	/**
 	 * 解析表单第一种方式</br>
 	 * 
@@ -46,6 +46,7 @@ public class ApiFormController {
 			// 形成键值对应的map
 			map.put(paramName, paramValue);
 		}
+		
 		String serviceName = null;
 		String methodName = null;
 		String paramsString = null;
