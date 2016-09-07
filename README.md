@@ -6,3 +6,5 @@
 1：spring mvc构建简单restful webservices
 
 2：利用反射实现业务逻辑调用寻址
+
+3：spring整合mybatis框架
