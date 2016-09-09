@@ -16,7 +16,10 @@
 	<bean id="springBeanUtil" class="com.afu.utils.SpringBeanUtil" />
 
 	<bean id="bizService" class="com.afu.service.impl.BizServiceImpl">
+		<!--注入dao访问接口 -->
 		<property name="ServiceConfigDao" ref="configDao" />
+		<!-- 注入异步线程池 -->
+		<property name="logsTaskExecutor" ref="logsTaskExecutor" />
 	</bean>
 	<bean id="configService" class="com.afu.service.impl.ConfigServiceImpl">
 		<property name="ServiceConfigDao" ref="configDao" />
