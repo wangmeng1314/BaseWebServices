@@ -21,6 +21,8 @@ public class T {
 	public void test() {
 		SpringBeanUtil springBeanUtil = new SpringBeanUtil();
 		ServiceConfigDao serviceConfigDao = (ServiceConfigDao) springBeanUtil.getBeanByName("configDao");
+		System.out.println("test begin");
 		Assert.assertNotNull(serviceConfigDao.getServiceConfig());
+		System.out.println("test end");
 	}
 }
